@@ -10,7 +10,7 @@ const initialState = {
 export const productReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_PRODUCTS:
-      return {...state, products: action.products}
+      return {...state, products: action.products}  
     case SELECTED_PRODUCT:
 
     case REMOVE_SELECTED_PRODUCT:
@@ -21,7 +21,7 @@ export const productReducer = (state = initialState, action) => {
 
 
 // ACTION CREATORS
-const setProducts = (products) => ({type: SET_PRODUCTS, products})
+export const setProducts = (products) => ({type: SET_PRODUCTS, products})
 
 const selectedProduct = (product) => ({type: SELECTED_PRODUCT, product})
 

@@ -9,5 +9,8 @@ export const productsApi = {
     return instance
       .get("products")
       .then(res => res.data)
+      .catch((err) => {
+        alert("Something went wrong", err)
+      })
   }
 }
