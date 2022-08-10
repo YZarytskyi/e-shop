@@ -1,5 +1,6 @@
 const ADD_CARD = "ADD_CARD";
 const REMOVE_CARD = "REMOVE_CARD";
+const REMOVE_CARD_QTY = 'REMOVE_CARD_QTY'
 
 const initialState = {
   cart: [],
@@ -23,9 +24,15 @@ export const cartReducer = (state = initialState, action) => {
           ...state,
           cart: state.cart.filter((x) => {
             return x.id !== action.product.id
+        }),
         }
-        ),
-        }
+    case REMOVE_CARD_QTY:
+      return {
+        ...state,
+        cart: state.cart.map((x) =>
+          x.id === action.product.id ? { ...x, qty: x.qty - 1 } : x
+        ),        
+      }
     default: return state;
   }
 };
@@ -33,3 +40,4 @@ export const cartReducer = (state = initialState, action) => {
 // ACTION CREATORS
 export const addCard = (product) => ({ type: ADD_CARD, product });
 export const removeCard = (product) => ({ type: REMOVE_CARD, product });
+export const removeCardQty = (product) => ({ type: REMOVE_CARD_QTY, product })

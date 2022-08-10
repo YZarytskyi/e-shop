@@ -44,18 +44,18 @@ const ProductList = () => {
         {filterList.map((product) => {
           return(
           <div className="col-md-3 mb-4 cardItem" key={product.id}>
-            <Card className="h-100 text-center p-4">
-              <Card.Img variant="top" src={product.image} height='250px' />
-              <Card.Body>
-                <Card.Title className="mb-0">{product.title.substring(0,12)}...</Card.Title>
-                <Card.Text className="lead fw-bold">
-                  ${product.price}
-                </Card.Text>
-                <NavLink to={`/products/${product.id}`}>
-                <button variant="primary" className="btn btn-outline-dark">Buy Now</button>
-                </NavLink>
-              </Card.Body>
-            </Card>
+            <NavLink to={`/products/${product.id}`} style={{ textDecoration: 'none', color: "black" }}>
+              <Card className="h-100 text-center p-4">
+                <Card.Img variant="top" src={product.image} height='250px' />
+                <Card.Body>
+                  <Card.Title className="mb-0">{product.title.substring(0,12)}...</Card.Title>
+                  <Card.Text className="lead fw-bold">
+                    ${product.price}
+                  </Card.Text>
+                  <button variant="primary" className="btn btn-outline-dark">Buy Now</button>
+                </Card.Body>
+              </Card>
+            </NavLink>
           </div>
           )
         })}

@@ -1,54 +1,54 @@
-import React from 'react';
+import { Button } from 'bootstrap';
+import React, { useState } from 'react';
+import { Badge } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
+import { ModalCheckout } from './Modals/Modals';
 
 const Checkout = () => {
+  
+  const cart = useSelector((state) => state.cart.cart)
+
+  const [modalShow, setModalShow] = useState(false);
+
+  const handlerClick = (e) => {
+    e.preventDefault()
+    setModalShow(true)
+  }
+
+  let total = 0
+  const itemList = (item) => {
+    total = total + item.price
+    return(
+      <li className="list-group-item d-flex justify-content-between lh-sm">
+      <div>
+        <h6 className='my-0'>{item.title}</h6>
+      </div>
+       <div className='text-muted'>${item.price}</div>
+    </li>
+    )
+  }
+
   return(
     <div className="container my-5 w-50">
     <div className="row">
         <div className="col-md-5 order-md-2 mb-4">
           <h4 className="d-flex justify-content-between align-items-center mb-3">
-            <span className="text-muted">Your cart</span>
-            <span className="badge badge-secondary badge-pill">3</span>
+            <span>Your cart</span>
+            <Badge bg="dark">{cart.length}</Badge>
           </h4>
           <ul className="list-group mb-3">
-            <li className="list-group-item d-flex justify-content-between lh-condensed">
-              <div>
-                <h6 className="my-0">Product name</h6>
-                <small className="text-muted">Brief description</small>
-              </div>
-              <span className="text-muted">$12</span>
-            </li>
-            <li className="list-group-item d-flex justify-content-between lh-condensed">
-              <div>
-                <h6 className="my-0">Second product</h6>
-                <small className="text-muted">Brief description</small>
-              </div>
-              <span className="text-muted">$8</span>
-            </li>
-            <li className="list-group-item d-flex justify-content-between lh-condensed">
-              <div>
-                <h6 className="my-0">Third item</h6>
-                <small className="text-muted">Brief description</small>
-              </div>
-              <span className="text-muted">$5</span>
-            </li>
-            <li className="list-group-item d-flex justify-content-between bg-light">
-              <div className="text-success">
-                <h6 className="my-0">Promo code</h6>
-                <small>EXAMPLECODE</small>
-              </div>
-              <span className="text-success">-$5</span>
-            </li>
+            {cart.map(itemList)}
             <li className="list-group-item d-flex justify-content-between">
               <span>Total (USD)</span>
-              <strong>$20</strong>
+              <strong>${total}</strong>
             </li>
           </ul>
 
           <form className="card p-2">
             <div className="input-group">
-              <input type="text" className="form-control" placeholder="Promo code" />
+              <input type="text" className="form-control" placeholder="Promo code" required />
               <div className="input-group-append">
-                <button type="submit" className="btn btn-secondary">Redeem</button>
+                <button type="submit" onClick={(e) => e.preventDefault()} className="btn btn-dark">Redeem</button>
               </div>
             </div>
           </form>
@@ -197,7 +197,13 @@ const Checkout = () => {
               </div>
             </div>
             <hr className="mb-4" />
-            <button className="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+            <button onClick={(e) => handlerClick(e)} className="btn btn-dark" type="submit">
+              Proceed to Checkout
+            </button>
+          <ModalCheckout
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+          />
           </form>
         </div>
       </div>

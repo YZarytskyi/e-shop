@@ -1,13 +1,13 @@
 import Header from "./Components/Header/Header";
-import Home from "./Components/Header/Navbar/Home";
+import Home from "./Components/Home";
 import ProductList from "./Components/Products/ProductList";
 import { Route, Routes } from "react-router-dom";
-import About from "./Components/Header/Navbar/About";
-import Contacts from "./Components/Header/Navbar/Contacts";
+import About from "./Components/About";
+import Contacts from "./Components/Contacts";
 import Product from "./Components/Products/Product";
-import Cart from "./Components/Header/Navbar/Cart";
+import Cart from "./Components/Cart";
 import "./App.css"
-import Checkout from "./Components/Header/Navbar/Checkout";
+import Checkout from "./Components/Checkout";
 
 
 
