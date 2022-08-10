@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
-import background from "../../assets/images/preview.jpg";
-import ProductList from "../Products/ProductList";
+import background from "../../../assets/images/preview.jpg";
+import ProductList from "../../Products/ProductList";
 
 const Home = () => {
   return (

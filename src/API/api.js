@@ -10,7 +10,15 @@ export const productsApi = {
       .get("products")
       .then(res => res.data)
       .catch((err) => {
-        alert("Something went wrong", err)
+        alert("Something went wrong! ", err)
+      })
+  },
+  getProduct(productId) {
+    return instance
+      .get(`products/${productId}`)
+      .then(res => res.data)
+      .catch((err) => {
+        alert("Something went wrong! ", err)
       })
   }
 }

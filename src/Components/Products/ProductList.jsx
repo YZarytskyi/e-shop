@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { productsApi } from "../../API/api";
 import { setProducts } from "../../Redux/Reducers/productReducer";
 import Card from "react-bootstrap/Card";
+import { NavLink } from "react-router-dom";
 
 const ProductList = () => {
   const products = useSelector((state) => state.allProducts.products);
@@ -25,7 +26,7 @@ const ProductList = () => {
   }
   const FilterButtons = () => {
     return (
-      <div className="buttons d-flex justify-content-center mb-5 pb-5">
+      <div className="buttons d-flex justify-content-center mb-2 pb-4">
         <button className="btn btn-outline-dark me-2" onClick={() => setFilterList(products)}>All</button>
         <button className="btn btn-outline-dark me-2" onClick={() => filterProduct("men's clothing")}>Men's Clothing</button>
         <button className="btn btn-outline-dark me-2" onClick={() => filterProduct("women's clothing")}>Women's Clothing</button>
@@ -42,7 +43,7 @@ const ProductList = () => {
       <>
         {filterList.map((product) => {
           return(
-          <div className="col-md-3 mb-4" key={product.id}>
+          <div className="col-md-3 mb-4 cardItem" key={product.id}>
             <Card className="h-100 text-center p-4">
               <Card.Img variant="top" src={product.image} height='250px' />
               <Card.Body>
@@ -50,7 +51,9 @@ const ProductList = () => {
                 <Card.Text className="lead fw-bold">
                   ${product.price}
                 </Card.Text>
+                <NavLink to={`/products/${product.id}`}>
                 <button variant="primary" className="btn btn-outline-dark">Buy Now</button>
+                </NavLink>
               </Card.Body>
             </Card>
           </div>
@@ -63,9 +66,9 @@ const ProductList = () => {
   };
 
   return (
-    <div className="container my-5 py-5">
+    <div className="container my-0 py-3">
       <div className="row">
-        <div className="col-12 mb-5">
+        <div className="col-12 mb-2">
           <h1 className="display-6 fw-bolder text-center">Latest Products</h1>
           <hr />
         </div>
