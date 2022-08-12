@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { ModalPassword } from './Modals/Modals';
 import * as yup from "yup"
@@ -33,6 +33,7 @@ const Login = () => {
 
   const loginSchema = yup.object().shape({
     username: yup.string()
+        .min(5, "Must be longer than 5 characters")
         .required("Required"),
     password: yup.string()
         .min(5, "Must be longer than 5 characters")

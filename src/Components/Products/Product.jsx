@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { productsApi } from "../../API/productsApi";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteSelectedProduct, selectedProduct } from "../../Redux/Reducers/productReducer";
@@ -6,18 +6,21 @@ import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { NavLink } from "react-router-dom";
 import { addCard, removeCard } from "../../Redux/Reducers/cartReducer";
+import { SelectedProductSkeleton } from "../LoadingSkeleton";
 
 const Product = () => {
   const product = useSelector((state) => state.allProducts.product);
   const dispatch = useDispatch();
   const productId = useParams();
+  const [btnText, setBtnText] = useState("Add to Cart");
+  const [loading, setLoading] = useState(false)
 
   const fetchProduct = async () => {
+    setLoading(true)
     const response = await productsApi.getProduct(productId.productId);
     dispatch(selectedProduct(response));
+    setLoading(false)
   };
-
-  let [btnText, setBtnText] = useState("Add to Cart")
 
   const handlerClick = (product) => {
     if(btnText === "Add to Cart") {
@@ -31,9 +34,7 @@ const Product = () => {
 
   useEffect(() => {
     if(productId && productId !== "") fetchProduct();
-    return () => {
-      dispatch(deleteSelectedProduct())
-    }
+    return () => dispatch(deleteSelectedProduct())
   }, [productId]);
 
   const ProductDetail = () => {
@@ -73,7 +74,10 @@ const Product = () => {
   return (
     <div className="container py-5 px-5">
       <div className="row py-4">
-        <ProductDetail />
+        {loading
+        ? <SelectedProductSkeleton />
+        : <ProductDetail />
+        }
       </div>
     </div>
   );

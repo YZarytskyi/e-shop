@@ -4,25 +4,25 @@ import { productsApi } from "../../API/productsApi";
 import { setProducts } from "../../Redux/Reducers/productReducer";
 import Card from "react-bootstrap/Card";
 import { NavLink } from "react-router-dom";
-import LoadingSkeleton from "../LoadingSkeleton";
+import { ProductsSkeleton } from "../LoadingSkeleton";
 
 const ProductList = () => {
   const products = useSelector((state) => state.allProducts.products);
   const dispatch = useDispatch();
+  const [filterList, setFilterList] = useState(products)
   const [loading, setLoading] = useState(false)
 
   const fetchProducts = async () => {
     setLoading(true);
     const response = await productsApi.getProducts();
     dispatch(setProducts(response));
+    setFilterList(response)
     setLoading(false)
   };
 
   useEffect(() => {
     fetchProducts();
   }, []);
-
-  const [filterList, setFilterList] = useState(products)
 
   const filterProduct = (type) => {
     const updatedList = products.filter(x => x.category === type)
@@ -66,7 +66,6 @@ const ProductList = () => {
       </>
     );
     }
-    else setFilterList(products)
   };
 
   return (
@@ -80,7 +79,7 @@ const ProductList = () => {
       <div className="row justify-content-center">
         <FilterButtons />
         {loading
-        ? <LoadingSkeleton />
+        ? <ProductsSkeleton />
         : <AllProducts />
         }
       </div>
