@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { productsApi } from "../../API/api";
+import { productsApi } from "../../API/productsApi";
 import { setProducts } from "../../Redux/Reducers/productReducer";
 import Card from "react-bootstrap/Card";
 import { NavLink } from "react-router-dom";
+import LoadingSkeleton from "../LoadingSkeleton";
 
 const ProductList = () => {
   const products = useSelector((state) => state.allProducts.products);
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false)
 
   const fetchProducts = async () => {
+    setLoading(true);
     const response = await productsApi.getProducts();
     dispatch(setProducts(response));
+    setLoading(false)
   };
 
   useEffect(() => {
@@ -75,7 +79,10 @@ const ProductList = () => {
       </div>
       <div className="row justify-content-center">
         <FilterButtons />
-        <AllProducts />
+        {loading
+        ? <LoadingSkeleton />
+        : <AllProducts />
+        }
       </div>
     </div>
   );

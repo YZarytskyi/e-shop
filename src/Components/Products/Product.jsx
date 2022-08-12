@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { productsApi } from "../../API/api";
+import React, { useEffect, useLayoutEffect, useState } from "react";
+import { productsApi } from "../../API/productsApi";
 import { useDispatch, useSelector } from "react-redux";
-import { selectedProduct } from "../../Redux/Reducers/productReducer";
+import { deleteSelectedProduct, selectedProduct } from "../../Redux/Reducers/productReducer";
 import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { NavLink } from "react-router-dom";
@@ -30,7 +30,10 @@ const Product = () => {
   }
 
   useEffect(() => {
-    fetchProduct();
+    if(productId && productId !== "") fetchProduct();
+    return () => {
+      dispatch(deleteSelectedProduct())
+    }
   }, [productId]);
 
   const ProductDetail = () => {

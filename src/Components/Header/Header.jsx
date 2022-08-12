@@ -5,11 +5,14 @@ import Navbar from "react-bootstrap/Navbar";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import style from './Header.module.css'
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
+import { logout } from "../../Redux/Reducers/authReducer";
 
 
 const Header = () => {
   const cart = useSelector((state) => state.cart.cart)
+  const isAuth = useSelector((state) => state.auth.isAuth)
+  const dispatch = useDispatch()
   return (
     <Navbar bg="light" expand="lg" className={`${style.header} py-3 my-1 bg-white shadow-sm`} >
       <Container>
@@ -40,12 +43,24 @@ const Header = () => {
               <span className={style.item}>Contacts</span>
             </NavLink>
           </Nav>
-          <NavLink to="/login" className="btn btn-outline-dark border-0 mt-2">
-          <FontAwesomeIcon icon="fa-solid fa-right-to-bracket" className="me-2" />Login</NavLink>
-          <NavLink to="/register" className="btn btn-outline-dark border-0 mt-2">
-          <FontAwesomeIcon icon="fa-solid fa-user-plus" className="me-2" />Register</NavLink>
-          <NavLink to="/cart" className="btn btn-outline-dark border-0 mt-2">
-          <FontAwesomeIcon icon="fa-solid fa-cart-shopping" className="me-2" />Cart ({cart.length})</NavLink>
+          {isAuth
+          ? 
+          <>
+            <button onClick={() => dispatch(logout())} className="btn btn-outline-dark border-0 mt-2 ms-5">
+            <FontAwesomeIcon icon="fa-solid fa-right-to-bracket" className="me-2" />Logout</button>
+            <NavLink to="/cart" className="btn btn-outline-dark border-0 mt-2">
+            <FontAwesomeIcon icon="fa-solid fa-cart-shopping" className="me-2" />Cart ({cart.length})</NavLink>
+          </>
+          : 
+          <>
+            <NavLink to="/login" className="btn btn-outline-dark border-0 mt-2">
+            <FontAwesomeIcon icon="fa-solid fa-right-to-bracket" className="me-2" />Login</NavLink>
+            <NavLink to="/register" className="btn btn-outline-dark border-0 mt-2">
+            <FontAwesomeIcon icon="fa-solid fa-user-plus" className="me-2" />Register</NavLink>
+            <NavLink to="/cart" className="btn btn-outline-dark border-0 mt-2">
+            <FontAwesomeIcon icon="fa-solid fa-cart-shopping" className="me-2" />Cart ({cart.length})</NavLink>            
+          </>
+          }
         </Navbar.Collapse>
       </Container>
     </Navbar>

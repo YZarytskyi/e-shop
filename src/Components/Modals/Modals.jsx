@@ -45,3 +45,20 @@ export function ModalCheckout(props) {
     </Modal>
   );
 }
+
+export function ModalPassword(props) {
+  return (
+    <Modal {...props}
+      size="md"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Body className="text-center">
+        <p>We will send you a link to reset your password on your email</p> 
+        <div>
+          <Button onClick={props.onHide}>Close</Button>
+        </div>
+      </Modal.Body>
+    </Modal>
+  );
+}

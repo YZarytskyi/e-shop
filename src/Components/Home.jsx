@@ -1,6 +1,4 @@
 import React from "react";
-import Card from "react-bootstrap/Card";
-import background from "../assets/images/preview.jpg";
 import slider1 from "../assets/images/slider1.png";
 import slider2 from "../assets/images/slider2.jpg";
 import slider3 from "../assets/images/slider3.jpg";
