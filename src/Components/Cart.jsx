@@ -26,8 +26,7 @@ const Cart = () => {
 
   const cartProduct = (cartProduct) => {
     return (
-      <div className="px-4 mt-5 bg-light rounded-3" key={cartProduct.id}> 
-          <button onClick={() => handleClose(cartProduct)} className="btn-close float-end" aria-label="Close"></button>
+      <div key={cartProduct.id}> 
           <div className="product">
             <div className="product-img">
               <img
@@ -48,6 +47,7 @@ const Cart = () => {
               </div>
               <hr />
             </div>
+            <button onClick={() => handleClose(cartProduct)} className="btn-close closeBtn" aria-label="Close"></button>
         </div>
       </div>
     );

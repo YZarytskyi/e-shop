@@ -4,7 +4,7 @@ const Footer = () => {
   return (
       <footer className="footer">
         <hr />
-        <div>© 2022 PRESTIGE LLC. All Rights Reserved.</div>
+        <div>&#169; 2022 PRESTIGE LLC. All Rights Reserved.</div>
       </footer>
   );
 };

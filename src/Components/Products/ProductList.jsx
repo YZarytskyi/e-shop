@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import style from './Products.module.css'
 import { useSelector, useDispatch } from "react-redux";
 import { productsApi } from "../../API/productsApi";
 import { setProducts } from "../../Redux/Reducers/productReducer";
@@ -30,29 +31,28 @@ const ProductList = () => {
   }
   const FilterButtons = () => {
     return (
-      <div className="buttons d-flex justify-content-center mb-2 pb-4">
-        <button className="btn btn-outline-dark me-2" onClick={() => setFilterList(products)}>All</button>
-        <button className="btn btn-outline-dark me-2" onClick={() => filterProduct("men's clothing")}>Men's Clothing</button>
-        <button className="btn btn-outline-dark me-2" onClick={() => filterProduct("women's clothing")}>Women's Clothing</button>
-        <button className="btn btn-outline-dark me-2" onClick={() => filterProduct("jewelery")}>Jewelry</button>
-        <button className="btn btn-outline-dark me-2" onClick={() => filterProduct("electronics")}>Electronic</button>
+      <div className={style.filterButtons}>
+        <button className="btn btn-outline-dark me-1" onClick={() => setFilterList(products)}>All</button>
+        <button className="btn btn-outline-dark me-1" onClick={() => filterProduct("men's clothing")}>Men's Clothing</button>
+        <button className="btn btn-outline-dark me-1" onClick={() => filterProduct("women's clothing")}>Women's Clothing</button>
+        <button className="btn btn-outline-dark me-1" onClick={() => filterProduct("jewelery")}>Jewelry</button>
+        <button className="btn btn-outline-dark me-1" onClick={() => filterProduct("electronics")}>Electronic</button>
       </div>
     );
   };
 
 
   const AllProducts = () => {
-    if(filterList.length !== 0) {
+    if (filterList.length) {
     return (
       <>
-        {filterList.map((product) => {
-          return(
-          <div className="col-md-3 mb-4 cardItem" key={product.id}>
+        {filterList.map((product) => (
+          <div className={style.card} key={product.id}>
             <NavLink to={`/products/${product.id}`} style={{ textDecoration: 'none', color: "black" }}>
-              <Card className="h-100 text-center p-4">
+              <Card className="h-100 text-center p-4 cardItem">
                 <Card.Img variant="top" src={product.image} height='250px' />
                 <Card.Body>
-                  <Card.Title className="mb-0">{product.title.substring(0,12)}...</Card.Title>
+                  <Card.Title className="mb-0">{product.title.slice(0,12)}...</Card.Title>
                   <Card.Text className="lead fw-bold">
                     ${product.price}
                   </Card.Text>
@@ -62,7 +62,7 @@ const ProductList = () => {
             </NavLink>
           </div>
           )
-        })}
+        )}
       </>
     );
     }

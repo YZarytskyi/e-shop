@@ -48,7 +48,7 @@ const Login = () => {
       fetchAuth(data, setError)
     }
     return(
-      <div className="Auth-form-container w-25 mx-auto mt-5">
+      <div className="Auth-form-container w-75 mx-auto mt-5" style={{maxWidth: "400px"}}>
         <form className="Auth-form" onSubmit={handleSubmit(onSubmit)}>
           <div className="Auth-form-content">
             <h3 className="Auth-form-title text-center">Login</h3>

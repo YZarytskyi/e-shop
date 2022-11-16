@@ -1,0 +1,41 @@
+.filterButtons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+
+.card {
+  width: calc(100% / 4) !important;
+  padding: 10px !important;
+  text-align: center !important;
+}
+
+@media screen and (max-width: 1199px) {
+  .card {
+    width: calc(100% / 3) !important;
+  }
+}
+
+@media screen and (max-width: 990px) {
+  .card {
+    width: calc(100% / 2) !important;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .filterButtons {
+    flex-wrap: wrap;
+  }
+  .filterButtons > button{
+    font-size: 12px;
+  }
+  .card {
+    max-width: 380px !important;
+    width: 100% !important;
+  }
+}
+
+@media screen and (max-width: 479px) {
+
+}

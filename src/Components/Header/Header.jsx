@@ -23,7 +23,6 @@ const Header = () => {
         <Navbar.Collapse id="navbarScroll">
           <Nav
             className={style.nav}
-            style={{ maxHeight: "100px" }}
             navbarScroll
           >
             <NavLink to='/' className={(navData) => navData.isActive 
@@ -45,21 +44,21 @@ const Header = () => {
           </Nav>
           {isAuth
           ? 
-          <>
+          <div className={style.auth}>
             <button onClick={() => dispatch(logout())} className="btn btn-outline-dark border-0 mt-2 ms-5">
             <FontAwesomeIcon icon="fa-solid fa-right-to-bracket" className="me-2" />Logout</button>
             <NavLink to="/cart" className="btn btn-outline-dark border-0 mt-2">
             <FontAwesomeIcon icon="fa-solid fa-cart-shopping" className="me-2" />Cart ({cart.length})</NavLink>
-          </>
+          </div>
           : 
-          <>
+          <div className={style.auth}>
             <NavLink to="/login" className="btn btn-outline-dark border-0 mt-2">
             <FontAwesomeIcon icon="fa-solid fa-right-to-bracket" className="me-2" />Login</NavLink>
             <NavLink to="/register" className="btn btn-outline-dark border-0 mt-2">
             <FontAwesomeIcon icon="fa-solid fa-user-plus" className="me-2" />Register</NavLink>
             <NavLink to="/cart" className="btn btn-outline-dark border-0 mt-2">
             <FontAwesomeIcon icon="fa-solid fa-cart-shopping" className="me-2" />Cart ({cart.length})</NavLink>            
-          </>
+          </div>
           }
         </Navbar.Collapse>
       </Container>

@@ -1,5 +1,5 @@
 import React from "react";
-import slider1 from "../assets/images/slider1.png";
+import slider1 from "../assets/images/slider1.jpg";
 import slider2 from "../assets/images/slider2.jpg";
 import slider3 from "../assets/images/slider3.jpg";
 import ProductList from "./Products/ProductList";
@@ -14,7 +14,8 @@ const Home = () => {
             className="d-block w-100"
             src={slider2}
             alt="First slide"
-            height="595px"
+            height="595"
+            style={{objectFit: 'cover'}}
           />
           <Carousel.Caption>
             <h1 className="text-black">PREMIUM BRANDS</h1>
@@ -27,7 +28,8 @@ const Home = () => {
             className="d-block w-100"
             src={slider3}
             alt="Second slide"
-            height="595px"
+            height="595"
+            style={{objectFit: 'cover'}}
           />
           <Carousel.Caption>
             <h1>SALES -50%</h1>
@@ -40,7 +42,8 @@ const Home = () => {
             className="d-block w-100"
             src={slider1}
             alt="Second slide"
-            height="595px"
+            height="595"
+            style={{objectFit: 'cover'}}
           />
           <Carousel.Caption>
             <h1>NEW SEASON ARRIVALS</h1>

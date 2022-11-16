@@ -49,7 +49,7 @@ const Product = () => {
           className="ms-5"
         />
       </div>
-      <div className="col-md-6">
+      <div className="col-md-6 p-4">
         <h4 className="text-uppercase text-text-black-50">
           {product.category}
         </h4>
@@ -72,7 +72,7 @@ const Product = () => {
   };
 
   return (
-    <div className="container py-5 px-5">
+    <div className="container py-3 px-3">
       <div className="row py-4">
         {loading
         ? <SelectedProductSkeleton />
