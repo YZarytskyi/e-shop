@@ -26,7 +26,7 @@ const Cart = () => {
 
   const cartProduct = (cartProduct) => {
     return (
-      <div key={cartProduct.id}> 
+      <div className="product-container" key={cartProduct.id}> 
           <div className="product">
             <div className="product-img">
               <img
@@ -66,12 +66,10 @@ const Cart = () => {
 
   const buttonCheckout = () => {
     return(
-      <div className="container">
-        <div className="row">
-          <NavLink to="/checkout" className="mb-5 w-25 mx-auto">
-            <Button variant="dark" className="w-100 mt-2">Proceed to checkout</Button>
-          </NavLink>
-        </div>
+      <div className="container w-75" style={{maxWidth: '200px'}}>
+        <NavLink to="/checkout" className="mb-5 mx-auto">
+          <Button variant="dark" className="w-100 mt-2">Proceed to checkout</Button>
+        </NavLink>
       </div>
     )
   }
