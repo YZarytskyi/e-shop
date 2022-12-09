@@ -19,14 +19,19 @@
 
 .product {
   display: flex;
+  width: 600px;
 }
 
 .product img {
   transition: all 0.5s ease;
 }
 
-.product-desc, .closeBtn {
+.product-desc {
   margin-left: 30px;
+}
+
+.closeBtn {
+  margin-left: auto;
 }
 
 .product-add-remove {
@@ -56,6 +61,7 @@
 .about img{
   margin: 10px 15px 20px 15px;
   width: 280px;
+  display: inline-block;
   transition: all 0.5s ease;
 }
 

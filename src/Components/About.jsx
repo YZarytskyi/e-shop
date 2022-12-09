@@ -8,7 +8,7 @@ const About = () => {
   return(
     <div className="container">
       <div className="row">
-        <div className="col-md-6 mx-auto text-center">
+        <div className="col-md-7 mx-auto text-center">
           <h1 className='mt-3'>About us</h1>
           <p className="lead text-black">
             We believe in a world where you have total freedom to be you, without judgement. To experiment. To express yourself. To be brave and grab life as the extraordinary adventure it is. So we make sure everyone has an equal chance to discover all the amazing things they’re capable of – no matter who they are, where they’re from or what looks they like to boss. We exist to give you the confidence to be whoever you want to be.

@@ -18,8 +18,8 @@ const Home = () => {
             style={{objectFit: 'cover'}}
           />
           <Carousel.Caption>
-            <h1 className="text-black">PREMIUM BRANDS</h1>
-            <p className="fs-6 text-black">CHECK OUT ALL THE TRENDS</p>
+            <h1>PREMIUM BRANDS</h1>
+            <p className="fs-6">CHECK OUT ALL THE TRENDS</p>
           </Carousel.Caption>
         </Carousel.Item>
 

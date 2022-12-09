@@ -32,11 +32,11 @@ const ProductList = () => {
   const FilterButtons = () => {
     return (
       <div className={style.filterButtons}>
-        <button className="btn btn-outline-dark me-1" onClick={() => setFilterList(products)}>All</button>
-        <button className="btn btn-outline-dark me-1" onClick={() => filterProduct("men's clothing")}>Men's Clothing</button>
-        <button className="btn btn-outline-dark me-1" onClick={() => filterProduct("women's clothing")}>Women's Clothing</button>
-        <button className="btn btn-outline-dark me-1" onClick={() => filterProduct("jewelery")}>Jewelry</button>
-        <button className="btn btn-outline-dark me-1" onClick={() => filterProduct("electronics")}>Electronic</button>
+        <button className="btn btn-outline-dark" onClick={() => setFilterList(products)}>All</button>
+        <button className="btn btn-outline-dark" onClick={() => filterProduct("men's clothing")}>Men's Clothing</button>
+        <button className="btn btn-outline-dark" onClick={() => filterProduct("women's clothing")}>Women's Clothing</button>
+        <button className="btn btn-outline-dark" onClick={() => filterProduct("jewelery")}>Jewelry</button>
+        <button className="btn btn-outline-dark" onClick={() => filterProduct("electronics")}>Electronic</button>
       </div>
     );
   };
@@ -50,7 +50,7 @@ const ProductList = () => {
           <div className={style.card} key={product.id}>
             <NavLink to={`/products/${product.id}`} style={{ textDecoration: 'none', color: "black" }}>
               <Card className="h-100 text-center p-4 cardItem">
-                <Card.Img variant="top" src={product.image} height='250px' />
+                <Card.Img variant="top" src={product.image} height='220px' />
                 <Card.Body>
                   <Card.Title className="mb-0">{product.title.slice(0,12)}...</Card.Title>
                   <Card.Text className="lead fw-bold">

@@ -2,13 +2,13 @@
   display: flex;
   justify-content: center;
   margin-bottom: 30px;
+  gap: 7px;
 }
 
 
 .card {
   width: calc(100% / 4) !important;
-  padding: 10px !important;
-  text-align: center !important;
+  padding: 10px;
 }
 
 @media screen and (max-width: 1199px) {
@@ -34,8 +34,4 @@
     max-width: 380px !important;
     width: 100% !important;
   }
-}
-
-@media screen and (max-width: 479px) {
-
 }
