@@ -29,7 +29,7 @@ const Header = () => {
     >
       <Container>
         <NavLink to="/" style={{ textDecoration: "none", color: "black" }}>
-          <Navbar.Brand className="fw-bold fs-4 ms-5 mt-1">
+          <Navbar.Brand className="fw-bold fs-4 mt-1">
             PRESTIGE
           </Navbar.Brand>
         </NavLink>

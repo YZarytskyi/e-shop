@@ -46,7 +46,6 @@ const Product = () => {
           alt={product.title}
           height="300px"
           width="300px"
-          className="ms-5"
         />
       </div>
       <div className="col-md-6 p-4">
