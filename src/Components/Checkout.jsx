@@ -1,34 +1,45 @@
 import React, { useState } from 'react';
 import { Badge } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { ModalCheckout } from './Modals/Modals';
+import { useNavigate } from "react-router-dom";
+import { clearCard } from '../Redux/Reducers/cartReducer';
+
 
 const Checkout = () => {
   
   const cart = useSelector((state) => state.cart.cart)
+  const dispatch = useDispatch();
 
   const [modalShow, setModalShow] = useState(false);
-
+  const navigate = useNavigate()
+  
   const handlerClick = (e) => {
     e.preventDefault()
     setModalShow(true)
   }
 
+  const onModalHide = () => {
+    setModalShow(false)
+    navigate('/')
+    dispatch(clearCard(...cart))
+  }
+
   let total = 0
   const itemList = (item) => {
-    total = total + item.price
+    total = total + (item.price * item.qty)
     return(
-      <li className="list-group-item d-flex justify-content-between lh-sm" key={item.id}>
+      <li className="list-group-item d-flex justify-content-between align-items-center gap-2" key={item.id}>
       <div>
         <h6 className='my-0'>{item.title}</h6>
       </div>
-       <div className='text-muted'>${item.price}</div>
+       <div className='text-muted'>{item.qty}&nbsp;x&nbsp;${item.price * item.qty}</div>
     </li>
     )
   }
 
   return(
-    <div className="container my-5 w-50">
+    <div className="container my-5 w-75">
     <div className="row">
         <div className="col-md-5 order-md-2 mb-4">
           <h4 className="d-flex justify-content-between align-items-center mb-3">
@@ -201,7 +212,7 @@ const Checkout = () => {
             </button>
           <ModalCheckout
             show={modalShow}
-            onHide={() => setModalShow(false)}
+            onHide={() => onModalHide()}
           />
           </form>
         </div>

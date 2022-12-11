@@ -15,9 +15,12 @@ const Header = () => {
 
   const onLinkClick = () => {
     const collapse = document.getElementById("navbarScroll");
-    const toggler = document.getElementsByClassName("navbar-toggler");
     collapse.classList.toggle("show");
-    toggler[0].classList.toggle("collapsed");
+  };
+
+  const onClickLogout = () => {
+    dispatch(logout());
+    onLinkClick();
   };
 
   return (
@@ -25,13 +28,10 @@ const Header = () => {
       bg="light"
       expand="lg"
       className={`${style.header} py-3 my-1 bg-white shadow-sm`}
-      collapseOnSelect={true}
     >
       <Container>
         <NavLink to="/" style={{ textDecoration: "none", color: "black" }}>
-          <Navbar.Brand className="fw-bold fs-4 mt-1">
-            PRESTIGE
-          </Navbar.Brand>
+          <Navbar.Brand className={`fw-bold fs-4 mt-1 ${style.brand}`}>PRESTIGE</Navbar.Brand>
         </NavLink>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
@@ -76,7 +76,7 @@ const Header = () => {
           {isAuth ? (
             <div className={style.auth}>
               <button
-                onClick={() => dispatch(logout())}
+                onClick={() => onClickLogout()}
                 className="btn btn-outline-dark border-0 mt-2 ms-5"
               >
                 <FontAwesomeIcon
@@ -88,6 +88,7 @@ const Header = () => {
               <NavLink
                 to="/cart"
                 className="btn btn-outline-dark border-0 mt-2"
+                onClick={() => onLinkClick()}
               >
                 <FontAwesomeIcon
                   icon="fa-solid fa-cart-shopping"
@@ -101,6 +102,7 @@ const Header = () => {
               <NavLink
                 to="/login"
                 className="btn btn-outline-dark border-0 mt-2"
+                onClick={() => onLinkClick()}
               >
                 <FontAwesomeIcon
                   icon="fa-solid fa-right-to-bracket"
@@ -111,6 +113,7 @@ const Header = () => {
               <NavLink
                 to="/register"
                 className="btn btn-outline-dark border-0 mt-2"
+                onClick={() => onLinkClick()}
               >
                 <FontAwesomeIcon
                   icon="fa-solid fa-user-plus"
@@ -121,6 +124,7 @@ const Header = () => {
               <NavLink
                 to="/cart"
                 className="btn btn-outline-dark border-0 mt-2"
+                onClick={() => onLinkClick()}
               >
                 <FontAwesomeIcon
                   icon="fa-solid fa-cart-shopping"

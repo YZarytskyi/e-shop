@@ -6,6 +6,7 @@
   margin: 0 auto;
 }
 
+
 .item {
   text-decoration: none;
   color: black;
@@ -43,4 +44,8 @@
   .auth > button, .auth > a {
     font-size: 27px;
   }
+}
+
+.brand {
+  margin-right: 11rem !important;
 }
