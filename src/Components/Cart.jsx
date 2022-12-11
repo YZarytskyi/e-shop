@@ -76,9 +76,9 @@ const Cart = () => {
 
   return (
     <>
-      {!cart.length && emptyCart()}
-      {cart.length && cart.map(cartProduct)}
-      {cart.length && buttonCheckout()}
+      {cart.length === 0 && emptyCart()}
+      {cart.length !== 0 && cart.map(cartProduct)}
+      {cart.length !== 0 && buttonCheckout()}
     </>
   );
 };
